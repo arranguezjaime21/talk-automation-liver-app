@@ -93,6 +93,9 @@ git push origin main - oush changes to main
 
 git pull --rebase origin main - pull main to local 
 
+git pull origin main
+git fetch main
+git merge origin/main
 
 ========================== BEFORE ASYNC FUNCTION ===============================
        driver = await remote({
