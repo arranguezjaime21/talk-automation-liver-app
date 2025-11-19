@@ -11,5 +11,8 @@ describe ("Mypage Template Settings Test", function () {
       templateType: "gallery",
     });
   });
+  it.only("sdsds", async function () {
+    await acquisitionStars.userStars();
+  })
 
 })
