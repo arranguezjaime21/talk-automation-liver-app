@@ -83,7 +83,7 @@ export const MyPageSelectors = {
     myPageSettings: 'android=new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().resourceId("com.fdc_machetalk_broadcaster:id/rl_settings"))',
     myPageTemplateSettings: 'id=com.fdc_machetalk_broadcaster:id/linear_layout_template_settings',
     myPageNotificationSettings: 'id=com.fdc_machetalk_broadcaster:id/linear_layout_notification_settings',
-    myPageStremingBonus: 'id=com.fdc_machetalk_broadcaster:id/linear_layout_broadcast_bonus',
+    myPageStreamingBonus: 'id=com.fdc_machetalk_broadcaster:id/linear_layout_broadcast_bonus',
 
     // -- Logout --
     logoutBtn: '//androidx.recyclerview.widget.RecyclerView[@resource-id="com.fdc_machetalk_broadcaster:id/rv_settings_menu"]/android.widget.RelativeLayout[9]',
@@ -105,4 +105,12 @@ export const MyPageSelectors = {
 
     // -- Template Settings -- 
     titleTemplateWording: "id=com.fdc_machetalk_broadcaster:id/actionBarTitle",
+}
+
+export const NotificationSettingsSelectors = {
+    vibrateToggle: 'id=com.fdc_machetalk_broadcaster:id/cb_viber_setting',
+    soundToggle: 'id=com.fdc_machetalk_broadcaster:id/cb_sound_setting',
+    notificationsToggle: 'id=com.fdc_machetalk_broadcaster:id/cb_inn_app_general',
+
+    backBtn: 'id=com.fdc_machetalk_broadcaster:id/btn_backs',
 }

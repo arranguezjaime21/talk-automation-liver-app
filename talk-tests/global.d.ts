@@ -1,6 +1,8 @@
 import { LoginScreen } from "../talk-screens/login/login.main.js";
 import { Logout } from "../talk-screens/mypage/logout.main.js";
+import { NotificationSettings } from "../talk-screens/mypage/notificationsettings.main.js";
 import { AcquisitionStars } from "../talk-screens/mypage/stars.main.js";
+import { StreamingBonus } from "../talk-screens/mypage/streambonus.main.js";
 import { TemplateSettings } from "../talk-screens/mypage/templateSettings.main.js";
 import { Permission } from "../talk-screens/permission/permission.main.js";
 import { CallAppeal } from "../talk-screens/search/callappeal.main.js";
@@ -14,6 +16,8 @@ declare global {
     var templateSettings: TemplateSettings;
     var logout: Logout;
     var acquisitionStars: AcquisitionStars;
+    var notificationSettings: NotificationSettings;
+    var streamingBonus: StreamingBonus;
 }
 
 export {};

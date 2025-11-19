@@ -58,4 +58,14 @@ export class BasePage {
         }
     }
 
+    async isButtonEnable (selector, timeout = 3000) {
+        try {
+            const el = await this.waitAndFind(selector, timeout);
+            const btnStats = await el.getAttribute("checked");
+            return btnStats === "true";
+        } catch {
+            return false;
+        }
+    }
+
 }

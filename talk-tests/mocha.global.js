@@ -7,6 +7,8 @@ import { CallAppeal } from "../talk-screens/search/callappeal.main.js";
 import { TemplateSettings } from "../talk-screens/mypage/templateSettings.main.js";
 import { Logout } from "../talk-screens/mypage/logout.main.js";
 import { AcquisitionStars } from "../talk-screens/mypage/stars.main.js";
+import { NotificationSettings } from "../talk-screens/mypage/notificationsettings.main.js";
+import { StreamingBonus } from "../talk-screens/mypage/streambonus.main.js";
 
 export const mochaHooks = {
 async beforeAll() {
@@ -27,6 +29,8 @@ async beforeAll() {
         global.templateSettings = new TemplateSettings(global.driver);
         global.logout = new Logout(global.driver);
         global.acquisitionStars = new AcquisitionStars(global.driver);
+        global.notificationSettings = new NotificationSettings(global.driver);
+        global.streamingBonus = new StreamingBonus(global.driver);
 
     },
 
