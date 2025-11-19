@@ -5,6 +5,7 @@ import { AcquisitionStars } from "../talk-screens/mypage/stars.main.js";
 import { StreamingBonus } from "../talk-screens/mypage/streambonus.main.js";
 import { TemplateSettings } from "../talk-screens/mypage/templateSettings.main.js";
 import { Permission } from "../talk-screens/permission/permission.main.js";
+import { AttackTab } from "../talk-screens/search/attacktab.main.js";
 import { CallAppeal } from "../talk-screens/search/callappeal.main.js";
 import { CallSettings } from "../talk-screens/search/callsettings.main.js";
 
@@ -18,6 +19,7 @@ declare global {
     var acquisitionStars: AcquisitionStars;
     var notificationSettings: NotificationSettings;
     var streamingBonus: StreamingBonus;
+    var attackTab: AttackTab;
 }
 
 export {};

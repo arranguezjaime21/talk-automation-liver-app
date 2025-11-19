@@ -114,3 +114,13 @@ export const NotificationSettingsSelectors = {
 
     backBtn: 'id=com.fdc_machetalk_broadcaster:id/btn_backs',
 }
+
+export const AttackTabSelectors = {
+    userList: 'id=com.fdc_machetalk_broadcaster:id/listItemHolder',
+    sendTemplateBtn: 'id=com.fdc_machetalk_broadcaster:id/linear_layout_template',
+    userNickName: 'id=com.fdc_machetalk_broadcaster:id/nickName',
+    templateOFF: 'id=com.fdc_machetalk_broadcaster:id/error_content',
+    closedImg: 'id=com.fdc_machetalk_broadcaster:id/image_button_close',
+    tempList: 'id=com.fdc_machetalk_broadcaster:id/rv_template',
+    setTemplate: 'id=com.fdc_machetalk_broadcaster:id/btn_template_setting',
+}
