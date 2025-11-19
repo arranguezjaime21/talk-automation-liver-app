@@ -4,6 +4,8 @@ import { LoginScreen } from "../talk-screens/login/login.main.js";
 import { Permission } from "../talk-screens/permission/permission.main.js";
 import { CallSettings } from "../talk-screens/search/callsettings.main.js";
 import { CallAppeal } from "../talk-screens/search/callappeal.main.js";
+import { TemplateSettings } from "../talk-screens/mypage/templateSettings.main.js";
+import { Logout } from "../talk-screens/mypage/logout.main.js";
 
 export const mochaHooks = {
 async beforeAll() {
@@ -21,6 +23,8 @@ async beforeAll() {
         global.permission = new Permission(global.driver);
         global.callSettings = new CallSettings(global.driver);
         global.callAppeal = new CallAppeal(global.driver);
+        global.templateSettings = new TemplateSettings(global.driver);
+        global.logout = new Logout(global.driver);
 
     },
 

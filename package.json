@@ -5,9 +5,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test:login": "npx mocha --require talk-tests/mocha.global.reset.js talk-tests/login-test/login.test.js --timeout 60000",
-    "test:callsettings": "npx mocha --require talk-tests/mocha.global.js talk-tests/search-test/callsettings.test.js --timeout 60000",
-    "test:callappeal": "npx mocha --require talk-tests/mocha.global.js talk-tests/search-test/callappeal.test.js --timeout 60000"
+    "test:login": "npx mocha --require talk-tests/mocha.global.reset.js talk-tests/login/login.test.js --timeout 60000",
+    "test:callsettings": "npx mocha --require talk-tests/mocha.global.js talk-tests/search/callsettings.test.js --timeout 60000",
+    "test:callappeal": "npx mocha --require talk-tests/mocha.global.js talk-tests/search/callappeal.test.js --timeout 60000",
+    "test:mypagetemplate": "npx mocha --require talk-tests/mocha.global.js talk-tests/mypage/template.test.js --timeout 60000"
   },
   "keywords": [],
   "author": "",

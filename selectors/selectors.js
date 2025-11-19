@@ -20,3 +20,89 @@ export const SearchScreenSelectors = {
     callSettingsVisible: 'id=com.fdc_machetalk_broadcaster:id/rl_options',
     toastMessage: 'id=com.fdc_machetalk_broadcaster:id/tv_message',
 }; 
+
+export const TemplateSelectors = { 
+
+    // -- template screen --
+    templateIcon: 'id=com.fdc_machetalk_broadcaster:id/template_button',
+    createTemplate: 'id=com.fdc_machetalk_broadcaster:id/create_template_clickable',
+    templateTitle: 'id=com.fdc_machetalk_broadcaster:id/tv_header_title',
+    templateDescription: 'id=com.fdc_machetalk_broadcaster:id/et_template_content',
+
+    // -- camera thumbnail status --
+    iconThumbImage: 'id=img com.fdc_machetalk_broadcaster:id/template_img',
+    iconThumbDefault: 'id=com.fdc_machetalk_broadcaster:id/img_empty_template',
+    
+    // -- save function -- 
+    saveTemplate: 'id=com.fdc_machetalk_broadcaster:id/rl_confirm',
+    successModal: 'id=com.fdc_machetalk_broadcaster:id/message',
+    confirmBtn: 'id=com.fdc_machetalk_broadcaster:id/confirmButton',
+
+    //camera icon
+    btnIDCam: 'id=com.fdc_machetalk_broadcaster:id/rl_template_image',
+    // -- video icon --
+    btnIDVideo: "id=com.fdc_machetalk_broadcaster:id/rl_template_video",
+
+    // -- capture --
+    btnCamera: 'id=com.fdc_machetalk_broadcaster:id/tv_camera',
+    btnCapture: 'id=com.android.camera2:id/shutter_button',
+    btnConfirm: 'id=com.android.camera2:id/done_button',
+    btnUpload: 'id=com.fdc_machetalk_broadcaster:id/tv_use_photo',
+
+     // -- gallery --
+     btnGallery: 'id=com.fdc_machetalk_broadcaster:id/tv_gallery',
+     //>>>> custom locator <<<<<
+     deviceFile: '//*[@resource-id="com.google.android.apps.photos:id/title" and @text="Download"]',
+     deviceGallery: 'id=com.google.android.apps.photos:id/recycler_view',
+     galleryItems: '//android.support.v7.widget.RecyclerView/android.widget.ImageView',
+
+
+     
+    // -- close/ cancel button -- 
+    closedTemplate: 'id=com.fdc_machetalk_broadcaster:id/close_button',
+    cancelBtn: 'id=com.fdc_machetalk_broadcaster:id/tv_cancel',
+
+    // -- template deletion --
+    deleteTemplate: 'id=com.fdc_machetalk_broadcaster:id/btn_delete',
+    deletionModalText: 'id=com.fdc_machetalk_broadcaster:id/tv_title', //テンプレートを削除 
+    confirmDeletion: 'id=com.fdc_machetalk_broadcaster:id/rl_dialog_confirm',
+
+    // -- template item -
+    templateList: '//androidx.recyclerview.widget.RecyclerView/android.widget.RelativeLayout',
+    postedText: '//*[@resource-id="com.fdc_machetalk_broadcaster:id/tv_content" and string-length(@text) > 0]',
+
+    // -- library permission --
+    libraryDialog: "id=com.android.permissioncontroller:id/grant_singleton",
+    allowLibrary: "id=com.android.permissioncontroller:id/permission_allow_all_button",
+
+};
+
+export const MyPageSelectors = {
+    // --- My Page Items ---
+    myPageNav: '(//android.widget.ImageView[@resource-id="com.fdc_machetalk_broadcaster:id/icon"])[5]',
+    myPageSettings: 'android=new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().resourceId("com.fdc_machetalk_broadcaster:id/rl_settings"))',
+    myPageTemplateSettings: 'id=com.fdc_machetalk_broadcaster:id/linear_layout_template_settings',
+    myPageNotificationSettings: 'id=com.fdc_machetalk_broadcaster:id/linear_layout_notification_settings',
+    myPageStremingBonus: 'id=com.fdc_machetalk_broadcaster:id/linear_layout_broadcast_bonus',
+
+    // -- Logout --
+    logoutBtn: '//androidx.recyclerview.widget.RecyclerView[@resource-id="com.fdc_machetalk_broadcaster:id/rv_settings_menu"]/android.widget.RelativeLayout[9]',
+    logoutModal: 'id=com.fdc_machetalk_broadcaster:id/rl_message',
+    logoutConfirm: 'id=com.fdc_machetalk_broadcaster:id/rl_dialog_confirm',
+
+    // -- Acquired Stars -- 
+    mypageStar: "id=com.fdc_machetalk_broadcaster:id/rl_stars",
+    ownStars: "id=com.fdc_machetalk_broadcaster:id/tvStar",
+    closeWebView: "id=com.fdc_machetalk_broadcaster:id/btnClose",
+    //to get the stars amount via webview
+    starwebV: '//android.webkit.WebView//android.view.View[@text and not(@text="")]',
+    //to get element is displaed via webview
+    successDisplay: '//android.webkit.WebView//android.widget.TextView[@text="WEBで検索してね！"]',
+
+    // -- Streaming Bonus Webview -- 
+    streamingWebview: '//android.widget.TextView[@text="ボーナス獲得状況を確認"]',
+ 
+
+    // -- Template Settings -- 
+    titleTemplateWording: "id=com.fdc_machetalk_broadcaster:id/actionBarTitle",
+}
