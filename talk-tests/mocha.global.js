@@ -10,6 +10,7 @@ import { AcquisitionStars } from "../talk-screens/mypage/stars.main.js";
 import { NotificationSettings } from "../talk-screens/mypage/notificationsettings.main.js";
 import { StreamingBonus } from "../talk-screens/mypage/streambonus.main.js";
 import { AttackTab } from "../talk-screens/search/attacktab.main.js";
+import { TimelinePosting } from "../talk-screens/timeline/timeline.posting.js";
 
 export const mochaHooks = {
 async beforeAll() {
@@ -33,6 +34,7 @@ async beforeAll() {
         global.notificationSettings = new NotificationSettings(global.driver);
         global.streamingBonus = new StreamingBonus(global.driver);
         global.attackTab = new AttackTab(global.driver);
+        global.timelinePosting = new TimelinePosting(global.driver);
 
     },
 

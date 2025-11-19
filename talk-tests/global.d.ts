@@ -8,6 +8,7 @@ import { Permission } from "../talk-screens/permission/permission.main.js";
 import { AttackTab } from "../talk-screens/search/attacktab.main.js";
 import { CallAppeal } from "../talk-screens/search/callappeal.main.js";
 import { CallSettings } from "../talk-screens/search/callsettings.main.js";
+import { TimelinePosting } from "../talk-screens/timeline/timeline.posting.js";
 
 declare global {
     var loginScreen: LoginScreen;
@@ -20,6 +21,7 @@ declare global {
     var notificationSettings: NotificationSettings;
     var streamingBonus: StreamingBonus;
     var attackTab: AttackTab;
+    var timelinePosting: TimelinePosting;
 }
 
 export {};

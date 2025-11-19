@@ -124,3 +124,66 @@ export const AttackTabSelectors = {
     tempList: 'id=com.fdc_machetalk_broadcaster:id/rv_template',
     setTemplate: 'id=com.fdc_machetalk_broadcaster:id/btn_template_setting',
 }
+
+export const TimelinePageSelectors = { 
+    timelineNav: '(//android.widget.ImageView[@resource-id="com.fdc_machetalk_broadcaster:id/icon"])[4]',
+    newPost: 'id=com.fdc_machetalk_broadcaster:id/fl_new_post',
+    postText: 'id=com.fdc_machetalk_broadcaster:id/et_post_text',
+    postCamera: '//*[@resource-id="com.fdc_machetalk_broadcaster:id/fl_image_container"][1]',
+    postGallery: '//*[@resource-id="com.fdc_machetalk_broadcaster:id/fl_image_container"]',
+    uploadImagePreview: 'id=com.fdc_machetalk_broadcaster:id/iv_selected_photo',
+    uploadImageCancel: 'id=com.fdc_machetalk_broadcaster:id/iv_selected_photo_dismiss',
+
+    // -- save function -- 
+    submitPost: 'id=com.fdc_machetalk_broadcaster:id/rl_confirm',
+
+    // -- capture and library --
+    btnCapture: 'id=com.android.camera2:id/shutter_button',
+    btnConfirm: 'id=com.android.camera2:id/done_button',
+    btnUpload: 'id=com.fdc_machetalk_broadcaster:id/tv_use_photo',
+
+    // -- library permission --
+    libraryDialog: "id=com.android.permissioncontroller:id/grant_singleton",
+    allowLibrary: "id=com.android.permissioncontroller:id/permission_allow_all_button",
+    //>>>> custom locator <<<<<
+     deviceFile: '//*[@resource-id="com.google.android.apps.photos:id/title" and @text="Download"]',
+     deviceGallery: 'id=com.google.android.apps.photos:id/recycler_view',
+     galleryItems: '//android.support.v7.widget.RecyclerView/android.widget.ImageView',
+
+    // -- in-review status -- 
+    approval: 'id=com.fdc_machetalk_broadcaster:id/tv_for_approval_message',
+    timelineList: '//androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout',
+
+    // -- post in review , if actual post display on the list -- 
+    postedText: '//*[@resource-id="com.fdc_machetalk_broadcaster:id/tv_content" and string-length(@text) > 0]',
+
+    // -- empty list -- 
+    emptyTimeline: 'id=com.fdc_machetalk_broadcaster:id/empty_result',
+    emptyText: 'id=com.fdc_machetalk_broadcaster:id/tv_empty_result',
+    postOption: 'id=com.fdc_machetalk_broadcaster:id/btn_close',
+    
+    // -- deletion --
+    postDelModalText: 'id=com.fdc_machetalk_broadcaster:id/tv_title',
+    postDelCancel: 'id=com.fdc_machetalk_broadcaster:id/rl_csancel',
+    postDelConfirm: 'id=com.fdc_machetalk_broadcaster:id/rl_dialog_confirm',
+    postDelToast: 'id=com.fdc_machetalk_broadcaster:id/text_view_message',
+
+    // -- timeline tabs --
+    tab1: '//*[@resource-id="com.fdc_machetalk_broadcaster:id/tab_title" and @text="すべて"]',
+    tab2: '//*[@resource-id="com.fdc_machetalk_broadcaster:id/tab_title" and @text="フォロー中"]',
+    tab3: '//*[@resource-id="com.fdc_machetalk_broadcaster:id/tab_title" and @text="自分の投稿"]',
+
+    // >>> 1st tab locators <<<
+    // --sorting-- 
+    sortLabel: 'id=com.fdc_machetalk_broadcaster:id/tv_sort_label',
+    sortRecommended: 'id=com.fdc_machetalk_broadcaster:id/rl_timeline_sort_type_recommended',
+    sortLatest: 'id=com.fdc_machetalk_broadcaster:id/rl_timeline_sort_type_new_arrival',
+    sortWording: '//android.widget.RelativeLayout/android.widget.TextView',
+
+    // --comment icon-- 
+    commentIcon: 'id=com.fdc_machetalk_broadcaster:id/ll_comment',
+    commentText: 'id=com.fdc_machetalk_broadcaster:id/etComment',
+    commentPost: 'id=com.fdc_machetalk_broadcaster:id/btn_post',
+    commentList: '//androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup',
+
+} 
