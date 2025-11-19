@@ -1,10 +1,11 @@
 {
   "name": "talk-auto-liver",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test:login": "npx mocha --require talk-tests/mocha.global.reset.js talk-tests/login-test/login.test.js --timeout 60000"
   },
   "keywords": [],
   "author": "",
