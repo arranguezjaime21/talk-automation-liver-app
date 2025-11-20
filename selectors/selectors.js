@@ -185,5 +185,8 @@ export const TimelinePageSelectors = {
     commentText: 'id=com.fdc_machetalk_broadcaster:id/etComment',
     commentPost: 'id=com.fdc_machetalk_broadcaster:id/btn_post',
     commentList: '//androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup',
+    inreviewCom: 'id=com.fdc_machetalk_broadcaster:id/rl_comment_container',
+    commentedText: 'id=com.fdc_machetalk_broadcaster:id/comment',
+
 
 } 

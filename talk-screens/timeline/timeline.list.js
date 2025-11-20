@@ -51,10 +51,6 @@ export class TimelineList extends BasePage{
         } catch (err) {
             throw new Error(`Unexpected error or sorting element not found: ${err.message}`);
         }
-        
-
-
-
     }
 
 }

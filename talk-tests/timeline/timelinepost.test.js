@@ -14,9 +14,14 @@ describe ("Timeline Post", function () {
         await timelineDeletion.postDeletion(0);
     });
 
-    it.only("Timeline List Sorting", async function () {
+    it("Timeline List Sorting", async function () {
         await timelineList.timelineSort({
             sort: "recommended",
         });
     });
+    it.only("Timeline Comment", async function () {
+        await timelineComment.timelineComment({
+            comment: FakeData.randomSentence(),
+        });
+    })
 })
