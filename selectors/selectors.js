@@ -187,6 +187,11 @@ export const TimelinePageSelectors = {
     commentList: '//androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup',
     inreviewCom: 'id=com.fdc_machetalk_broadcaster:id/rl_comment_container',
     commentedText: 'id=com.fdc_machetalk_broadcaster:id/comment',
+    commentOption: 'id=com.fdc_machetalk_broadcaster:id/btn_close',
+    commentConfirmDelete: 'id=com.fdc_machetalk_broadcaster:id/rl_dialog_confirm',
+    commentDeleteWording: 'id=com.fdc_machetalk_broadcaster:id/tv_title',
+    commentDeletionToast: 'id=com.fdc_machetalk_broadcaster:id/rl_dialog_container'
+
 
 
 } 

@@ -43,7 +43,7 @@ export class TimelineDeletion extends BasePage {
 
             const targetPost = postList[index];
             const textElement = await targetPost.$(this.selectors.postedText);
-            const deletedPostItem = await textElement.getText().catch(() => "Unknown text");
+            const deletedPostItem = await textElement.getText().catch(() => null);
 
             const postItem = await targetPost.$(this.selectors.approval);
             const isInReview = await postItem.isExisting().catch(() => false);
@@ -65,9 +65,83 @@ export class TimelineDeletion extends BasePage {
                 ? ">>> Post successfully deleted and toast is displayed"
                 : ">>> Post successfully deleted but toast is might delay or not displayed"
             );
+
+            // -- verifying the deleted timeline post --
+            await this.gesture.swipeDownToRefresh();
+
+            const updatedList = await this.waitAndFind$$(this.selectors.timelineList, 5000);
+            let stillExist = false;
+            for (const item of updatedList) {
+                const txt = await item.$(this.selectors.postedText).getText().catch(() => "");
+                if (deletedPostItem && txt.includes(deletedPostItem)) {
+                    stillExist = true;
+                    break;
+                }
+            }
+
+            if(stillExist) {
+                console.log(`>>> ERROR: Deleted post is still in the list - "${deletedPostItem}" `);
+            } else {
+                console.log(`>>> SUCCESS: Deleted post is successfully remove in the timeline list - "${deletedPostItem}"`);
+            }
         } catch (err) {
             throw new Error(`Unexpected error: "${err.message}"`);
         }
+    }
+
+    // -- COMMENT DELETION --
+    async commentDeletion (index) {
+        await this.navigation();
+    
+        const commentList = await this.safeFindAll(this.selectors.commentList);
+        if(!commentList || commentList.length === 0) return console.log(">>> No comment list in target post nothing to delete");
+        if (index >= commentList.length) return console.log(`Invalid inputted index: ${index}. Only ${commentList.length - 1} is the highest valid index`);
+
+        try {
+            const targetComment = commentList[index];
+            const commentTxtEl = await targetComment.$(this.selectors.commentedText);
+            const deletedComment = await commentTxtEl.getText().catch(() => null);
+
+            const isInReview = await targetComment.$(this.selectors.inreviewCom).isExisting().catch(() => false);
+            if(isInReview) return console.log(">>> Target comment still in review and cannot be deleted");
+
+            await targetComment.$(this.selectors.commentOption).click();
+            
+            const deletionModal = await this.elementExists(this.selectors.commentDeleteWording, 3000);
+            if(!deletionModal) throw new Error(">>> Unexpected error or modal is not displayed"); 
+            
+            await this.waitAndClick(this.selectors.commentConfirmDelete);
+
+            const toastMsg = await this.elementExists(this.selectors.commentDeletionToast, 3000);
+
+            console.log (
+                toastMsg
+                ? ">>> Comment post successfully deleted and toast is displayed"
+                : ">>> Comment post successfully deleted but toast is might delay or not displayed"
+            );
+
+            // -- verifying deleted comment-- 
+            const updatedCommentList = await this.safeFindAll(this.selectors.commentList, 5000);
+            let isDeleted = false;
+
+            for (const comment of updatedCommentList) {
+                const txt = await comment.$(this.selectors.commentedText).getText().catch(() => "");
+                if(deletedComment && txt.includes(deletedComment)) {
+                    isDeleted = true;
+                    break;
+                }
+            }
+
+            if(isDeleted) {
+                console.log(`>>> ERROR: Deleted comment is still displayed in the comment list - ${deletedComment}`);
+            } else {
+                console.log(`>>> SUCCESS: Deleted comment is successfully removed in the comment list - ${deletedComment}`);
+            }
+
+        } catch (err) {
+            throw new Error(`Unexpected error: ${err.message}`);
+        }
+        
     }
 
 }

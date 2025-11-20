@@ -68,4 +68,13 @@ export class BasePage {
         }
     }
 
+    async safeFindAll(selector, timeout = 3000) {
+        try {
+            return await this.waitAndFind$$(selector, timeout);
+        } catch (err) {
+            return []; 
+        }   
+    }
+
+
 }

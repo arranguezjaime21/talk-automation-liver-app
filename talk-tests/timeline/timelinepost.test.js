@@ -19,9 +19,13 @@ describe ("Timeline Post", function () {
             sort: "recommended",
         });
     });
-    it.only("Timeline Comment", async function () {
+    it("Timeline Comment", async function () {
         await timelineComment.timelineComment({
             comment: FakeData.randomSentence(),
         });
-    })
+    });
+    it.only("Timeline Comment Deletion", async function () {
+        await timelineComment.timelinePostItem(0);
+        await timelineDeletion.commentDeletion(0);
+    });
 })
