@@ -9,4 +9,14 @@ describe ("Timeline Post", function () {
             postType: 'gallery',
         })
     });
+
+    it("Timeline Deletion", async function () {
+        await timelineDeletion.postDeletion(0);
+    });
+
+    it.only("Timeline List Sorting", async function () {
+        await timelineList.timelineSort({
+            sort: "recommended",
+        });
+    });
 })
