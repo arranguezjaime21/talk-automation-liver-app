@@ -42,6 +42,7 @@ export class TemplateSettings extends BasePage{
             await this.waitAndClick(this.selectors.myPageTemplateSettings);
             await this.waitAndClick(this.selectors.createTemplate);
         } catch {
+            await this.waitAndClick(this.selectors.createTemplate);
             return;
         }
     }
@@ -92,8 +93,6 @@ export class TemplateSettings extends BasePage{
 
     // --TEMPLATE CREATION--
     async templateCreation ({ content, templateType = "text" }) {
-        await this.navMyPageTemplate();
-
         const type = {
             text: async() => await this.setValue(this.selectors.templateDescription, content),
             camera: async() => await this.templateFill({

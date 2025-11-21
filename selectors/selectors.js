@@ -19,6 +19,9 @@ export const SearchScreenSelectors = {
     appealIcon: 'id=com.fdc_machetalk_broadcaster:id/rlStrength',
     callSettingsVisible: 'id=com.fdc_machetalk_broadcaster:id/rl_options',
     toastMessage: 'id=com.fdc_machetalk_broadcaster:id/tv_message',
+
+    // -- template icon -- 
+    templateSearch: 'id=com.fdc_machetalk_broadcaster:id/card_view_template',
 }; 
 
 export const TemplateSelectors = { 

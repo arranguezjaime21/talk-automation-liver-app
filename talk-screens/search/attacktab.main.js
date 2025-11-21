@@ -21,6 +21,17 @@ export class AttackTab extends BasePage{
         }
     }
 
+    async searchTemplateSettings () {
+        try {
+            await this.waitAndClick(this.selectors.searchPageNav);
+            await this.waitAndClick(this.selectors.templateSearch);
+            await this.waitAndClick(this.selectors.createTemplate);
+        } catch (error) {
+            await this.waitAndClick(this.selectors.createTemplate);
+            return;
+        }
+    }
+
     async sendTemplate () {
         await this.navigation();
         await this.userList(8);
