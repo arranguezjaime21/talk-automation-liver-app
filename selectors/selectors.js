@@ -20,8 +20,13 @@ export const SearchScreenSelectors = {
     callSettingsVisible: 'id=com.fdc_machetalk_broadcaster:id/rl_options',
     toastMessage: 'id=com.fdc_machetalk_broadcaster:id/tv_message',
 
+    // -- call appeal 5mins prevention --
+    callAppealDialog: 'id=com.fdc_machetalk_broadcaster:id/dialog_container',
+    okDialog: 'id=com.fdc_machetalk_broadcaster:id/confirmButton',
+
     // -- template icon -- 
     templateSearch: 'id=com.fdc_machetalk_broadcaster:id/card_view_template',
+
 }; 
 
 export const TemplateSelectors = { 

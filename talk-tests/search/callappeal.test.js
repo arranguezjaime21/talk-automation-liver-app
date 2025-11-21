@@ -3,7 +3,6 @@ describe ("Call Appeal Test", function () {
 
     it ("updating call appeal 1", async function () {
         await callSettings.navSearchPage();
-        await callAppeal.callAppealIcon();
         await callAppeal.setAppeal(1);
     });
    

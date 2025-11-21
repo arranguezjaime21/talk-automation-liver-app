@@ -1,3 +1,4 @@
+import { AppealOption } from "../../configs/callappeal.config.js";
 import { SearchScreenSelectors } from "../../selectors/selectors.js";
 import { BasePage } from "../base.js";
 import { CallSettings } from "./callsettings.main.js";
@@ -41,10 +42,23 @@ export class CallAppeal extends BasePage{
     }
 
     async setAppeal (settingIndex) {
-        const appeal = AppealOption[settingIndex];
-        if (!appeal) {
-            throw new Error (`⚠️ Unknown call setsting: ${settingIndex}`);
-        } 
-        await this.selectAppeal(appeal);
+        await this.callAppealIcon();
+        try {
+            const dialog = await this.elementExists(this.selectors.callAppealDialog, 3000);
+            if(dialog) {
+                console.log(">>> Already set template, try again later");
+                await this.waitAndClick(this.selectors.okDialog);
+                return;
+            }
+
+            const appeal = AppealOption[settingIndex];
+            if (!appeal) {
+                throw new Error (`⚠️ Unknown call settings: ${settingIndex}`);
+            } 
+            await this.selectAppeal(appeal);
+        } catch (error) {
+            throw new Error (`>>> Unexpected error: ${error.message}`);
+        }
+        
     }
 }
