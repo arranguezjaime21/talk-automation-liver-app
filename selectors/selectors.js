@@ -27,6 +27,8 @@ export const SearchScreenSelectors = {
     // -- template icon -- 
     templateSearch: 'id=com.fdc_machetalk_broadcaster:id/card_view_template',
 
+    
+
 }; 
 
 export const TemplateSelectors = { 
@@ -124,6 +126,7 @@ export const NotificationSettingsSelectors = {
 }
 
 export const AttackTabSelectors = {
+    attackTab: '//android.widget.TextView[@text="アタック"]',
     userList: 'id=com.fdc_machetalk_broadcaster:id/listItemHolder',
     sendTemplateBtn: 'id=com.fdc_machetalk_broadcaster:id/linear_layout_template',
     userNickName: 'id=com.fdc_machetalk_broadcaster:id/nickName',
@@ -199,7 +202,17 @@ export const TimelinePageSelectors = {
     commentConfirmDelete: 'id=com.fdc_machetalk_broadcaster:id/rl_dialog_confirm',
     commentDeleteWording: 'id=com.fdc_machetalk_broadcaster:id/tv_title',
     commentDeletionToast: 'id=com.fdc_machetalk_broadcaster:id/rl_dialog_container'
-
-
-
 } 
+
+export const MessageSelectors = {
+    messageNav: '(//android.widget.ImageView[@resource-id="com.fdc_machetalk_broadcaster:id/icon"])[2]',
+    // -- messages tabs --
+    unrepliedTab: '//android.widget.LinearLayout/android.widget.LinearLayout[1]',
+    messageAllTab: '//android.widget.LinearLayout/android.widget.LinearLayout[2]',
+    messageFollowTab: '//android.widget.LinearLayout/android.widget.LinearLayout[3]',
+   
+    messageList: '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout',
+    userNickName: 'id=com.fdc_machetalk_broadcaster:id/text_view_nickname',
+
+   
+}

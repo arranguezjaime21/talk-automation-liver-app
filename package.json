@@ -14,7 +14,8 @@
     "test:logout": "npx mocha --require talk-tests/mocha.global.js talk-tests/mypage/logout.test.js --timeout 60000",
     "test:streamingbonus": "npx mocha --require talk-tests/mocha.global.js talk-tests/mypage/streamingbonus.test.js --timeout 60000",
     "test:attacktab": "npx mocha --require talk-tests/mocha.global.js talk-tests/search/attacktab.test.js --timeout 60000",
-    "test:timeline": "npx mocha --require talk-tests/mocha.global.js talk-tests/timeline/timeline.test.js --timeout 600000"
+    "test:timeline": "npx mocha --require talk-tests/mocha.global.js talk-tests/timeline/timeline.test.js --timeout 60000",
+    "test:message": "npx mocha -require talk-tests/mocha.global.js talk-tests/message/message.test.js --timeout 60000"
   },
   "keywords": [],
   "author": "",

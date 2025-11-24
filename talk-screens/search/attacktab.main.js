@@ -1,3 +1,4 @@
+
 import { AttackTabSelectors, SearchScreenSelectors, TemplateSelectors } from "../../selectors/selectors.js";
 import { BasePage } from "../base.js";
 
@@ -13,76 +14,64 @@ export class AttackTab extends BasePage{
     
     }
 
-    async navigation () {
+    async navigation() {
         try {
             await this.waitAndClick(this.selectors.searchPageNav);
+            await this.waitAndClick(this.selectors.attackTab);
         } catch {
+            await this.waitAndClick(this.selectors.attackTab);
             return;
         }
     }
 
-    async searchTemplateSettings () {
-        try {
-            await this.waitAndClick(this.selectors.searchPageNav);
-            await this.waitAndClick(this.selectors.templateSearch);
-            await this.waitAndClick(this.selectors.createTemplate);
-        } catch (error) {
-            await this.waitAndClick(this.selectors.createTemplate);
-            return;
+    async user (index) {
+        const userList = await this.safeFindAll(this.selectors.userList, 3000);
+        if(!userList.length) throw new Error(">>> No users found in attack tab list");
+        if(!userList[index]) throw new Error (`>>> Unable to find index: ${index} in the list`);
+
+        const userNickName = await userList[index].$(this.selectors.userNickName).getText();
+        console.log(`>>> Sending template to user: ${userNickName}`);
+
+        const sendBtn = await this.waitAndFind$$(this.selectors.sendTemplateBtn, 3000);
+        if(!sendBtn[index]) {
+            throw new Error (`>>> Unable to find send button for index: ${index} in the list`);
         }
+        await sendBtn[index].click();
+
     }
 
-    async sendTemplate () {
-        await this.navigation();
-        await this.userList(8);
-        const templateSetisVisible = await this.elementExists(this.selectors.templateOFF, 3000);
-        if (templateSetisVisible) {
-            console.log("User has no active template. Template Preview displayed.");
-            await this.enableTemplate(1);
-        } else {
-            console.log("user successfully sent template.");
-        }
-        
-    }
-
-    async enableTemplate (index) {
+     async enableTemplate (index) {
         await this.waitAndClick(this.selectors.closedImg);
         const templateList = await this.waitAndFind$$(this.selectors.tempList, 3000);
-        if (!templateList) {
-            throw new Error(`unable to find ${templateList} or user dont have template`);
-        } else {
-            const enable = await this.waitAndFind$$(this.selectors.setTemplate);
-            if (!enable[index]) {
-                throw new Error(`unable to find ${templateList} or user dont have template`);
-            } 
-            console.log("enabling user template...")
-            await enable[index].click();
-            await this.driver.pause(3000);
-            await this.waitAndClick(this.selectors.closedTemplate);
-            await this.userList(8);
-        }
+        if (!templateList.length) {
+            console.log(">>> User has no template");
+            return;
+        } 
+
+        const enable = await this.waitAndFind$$(this.selectors.setTemplate, 3000);
+        if (!enable[index]) {
+            throw new Error(`>>> unable to find ${templateList}`);
+        } 
+
+        console.log(">>> enabling user template...")
+        await enable[index].click();
+        await this.driver.pause(3000);
+        await this.waitAndClick(this.selectors.closedTemplate);        
     }
 
-    async userList(index) {
-        //get target user nickname
-        const userList = await this.waitAndFind$$(this.selectors.userList, 3000);
-        if (!userList[index]) {
-            throw new Error(`User at index ${index} not found`);
-        }
-
-        const userEl = await userList[index].$(this.selectors.userNickName, 3000);
-        const userNn = await userEl.getText();
-
-        console.log(`Sending template for user: "${userNn}"`);
-
-        // send template for target user
-        const sndBtn = await this.waitAndFind$$(this.selectors.sendTemplateBtn, 3000);
-        if (!sndBtn[index]) {
-            throw new Error(`Send button for index ${index} not found`);
-        }
-        await sndBtn[index].click();
-
+     async sendTemplate () {
+        await this.navigation();
+        await this.user(2);
+        const templateIsOff = await this.elementExists(this.selectors.templateOFF, 3000);
+        if (templateIsOff) {
+            console.log(">>> User has no active template. Template Preview displayed.");
+            await this.enableTemplate(1);
+            await this.user(2);
+            console.log(">>> Template sent successfully after enabling.");
+            return;
+        } 
+        console.log(">>> User successfully sent template.");  
+        
+        
     }
-
-
 }
