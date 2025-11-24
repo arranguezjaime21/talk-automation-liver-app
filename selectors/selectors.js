@@ -213,6 +213,13 @@ export const MessageSelectors = {
    
     messageList: '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout',
     userNickName: 'id=com.fdc_machetalk_broadcaster:id/text_view_nickname',
-
+    msgTextBox: '//android.widget.LinearLayout/android.widget.EditText',
+    msgStamp: 'id=com.fdc_machetalk_broadcaster:id/btn_stamp',
+    msgBtnMic: 'id=com.fdc_machetalk_broadcaster:id/btn_mic',
+    msgBtnGallery: 'id=com.fdc_machetalk_broadcaster:id/btn_upload',
+    msgBtnCamera: 'id=com.fdc_machetalk_broadcaster:id/btn_camera',
+    msgSendBtn: 'id=com.fdc_machetalk_broadcaster:id/btn_send',
+    stampTabs: '//android.widget.LinearLayout/android.widget.LinearLayout/android.widget.RelativeLayout',
+    stampItems: '//android.widget.GridView/android.widget.ImageView',
    
 }
