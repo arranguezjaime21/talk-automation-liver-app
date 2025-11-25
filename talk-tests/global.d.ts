@@ -1,5 +1,6 @@
 import { LoginScreen } from "../talk-screens/login/login.main.js";
 import { MessageList } from "../talk-screens/message/messagelist.main.js";
+import { EditPage } from "../talk-screens/mypage/editpage.main.js";
 import { Logout } from "../talk-screens/mypage/logout.main.js";
 import { NotificationSettings } from "../talk-screens/mypage/notificationsettings.main.js";
 import { AcquisitionStars } from "../talk-screens/mypage/stars.main.js";
@@ -30,6 +31,7 @@ declare global {
     var timelineList: TimelineList;
     var timelineComment: TimelineComment;
     var messageList: MessageList;
+    var editPage: EditPage;
 }
 
 export {};

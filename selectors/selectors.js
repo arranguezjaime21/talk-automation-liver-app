@@ -94,6 +94,7 @@ export const MyPageSelectors = {
     myPageTemplateSettings: 'id=com.fdc_machetalk_broadcaster:id/linear_layout_template_settings',
     myPageNotificationSettings: 'id=com.fdc_machetalk_broadcaster:id/linear_layout_notification_settings',
     myPageStreamingBonus: 'id=com.fdc_machetalk_broadcaster:id/linear_layout_broadcast_bonus',
+    myPageEditPage: 'id=com.fdc_machetalk_broadcaster:id/tv_edit',
 
     // -- Logout --
     logoutBtn: '//androidx.recyclerview.widget.RecyclerView[@resource-id="com.fdc_machetalk_broadcaster:id/rv_settings_menu"]/android.widget.RelativeLayout[9]',
@@ -111,7 +112,6 @@ export const MyPageSelectors = {
 
     // -- Streaming Bonus Webview -- 
     streamingWebview: '//android.widget.TextView[@text="ボーナス獲得状況を確認"]',
- 
 
     // -- Template Settings -- 
     titleTemplateWording: "id=com.fdc_machetalk_broadcaster:id/actionBarTitle",
@@ -222,4 +222,24 @@ export const MessageSelectors = {
     stampTabs: '//android.widget.LinearLayout/android.widget.LinearLayout/android.widget.RelativeLayout',
     stampItems: '//android.widget.GridView/android.widget.ImageView',
    
+}
+
+export const EditPageSelectors = {
+    itemSelfIntro: 'id=com.fdc_machetalk_broadcaster:id/tv_self_intro',
+    editSelfIntro: 'id=com.fdc_machetalk_broadcaster:id/txt_edit_self_introduction',
+    itemNickName: 'id=com.fdc_machetalk_broadcaster:id/tv_nickname',
+    editNickName: 'id=com.fdc_machetalk_broadcaster:id/txt_edit_nickname',
+    itemAge: 'id=com.fdc_machetalk_broadcaster:id/tv_age',
+    agePicker: '//android.widget.NumberPicker///android.widget.EditText[@resource-id="android:id/numberpicker_input"]',
+
+    itemRegion: 'id=com.fdc_machetalk_broadcaster:id/tv_region',
+    itemWork: 'id=com.fdc_machetalk_broadcaster:id/tv_occupation',
+    itemHeight: 'id=com.fdc_machetalk_broadcaster:id/tv_height',
+    itemType: 'id=com.fdc_machetalk_broadcaster:id/tv_body_type',
+    itemPersonality: 'id=com.fdc_machetalk_broadcaster:id/tv_personality',
+    itemHobby: 'id=com.fdc_machetalk_broadcaster:id/tv_hobby',
+    itemActiveTime: 'id=com.fdc_machetalk_broadcaster:id/tv_active_time',
+
+    btnSave: 'id=com.fdc_machetalk_broadcaster:id/btnSave',
+    listConfirm: 'id=com.fdc_machetalk_broadcaster:id/tv_confirm',
 }
