@@ -242,4 +242,27 @@ export const EditPageSelectors = {
 
     btnSave: 'id=com.fdc_machetalk_broadcaster:id/btnSave',
     listConfirm: 'id=com.fdc_machetalk_broadcaster:id/tv_confirm',
+
+    uploadImg: 'id=com.fdc_machetalk_broadcaster:id/iv_profile_upload_icon',
+    uploadSelection: 'id=com.fdc_machetalk_broadcaster:id/ll_upload_selection',
+    profileGallery: 'id=com.fdc_machetalk_broadcaster:id/tv_gallery',
+    profileCamera: 'id=com.fdc_machetalk_broadcaster:id/tv_camera',
+
+
+    // -- permission --
+    permissionDialog: 'id=com.android.permissioncontroller:id/grant_dialog',
+    allowCamPermission: 'id=com.android.permissioncontroller:id/permission_allow_foreground_only_button',
+    allowAllLibrary: 'id=com.android.permissioncontroller:id/permission_allow_all_button',
+
+    folderList: '//android.support.v7.widget.RecyclerView/android.widget.RelativeLayout[2]',
+    galleryImageList: 'id=com.google.android.apps.photos:id/recycler_view',
+    galleryImageItems: '//android.support.v7.widget.RecyclerView/android.widget.ImageView',
+    cropLayout: 'id=com.fdc_machetalk_broadcaster:id/crop_overlay_layout',
+
+    btnCapture: 'id=com.android.camera2:id/shutter_button',
+    btnConfirm: 'id=com.android.camera2:id/done_button',
+    btnUpload: 'id=com.fdc_machetalk_broadcaster:id/tv_use_photo',
+    inReview: 'id=com.fdc_machetalk_broadcaster:id/underExaminationTxt',
+    profilePic: 'id=com.fdc_machetalk_broadcaster:id/rl_image_clickable',
+
 }

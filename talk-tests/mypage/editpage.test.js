@@ -4,9 +4,9 @@ describe ("Edit Page Test", function () {
     this.timeout(90000);
 
     it.only("Edit Page Testing", async function () {
-        // await editPage.selfIntro({
-        //     selfIntro: FakeData.randomWord(),
-        // })
-        await editPage.userAge();
+        await editPage.navEditPage();
+        await editPage.profileUpload({
+            uploadVia: "camera",
+        })
     })
 })

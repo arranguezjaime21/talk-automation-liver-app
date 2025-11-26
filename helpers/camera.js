@@ -85,4 +85,42 @@ export class CameraHelper {
         }
 
     }
+
+    async profileCamera (selectors) {
+        const steps = [
+            selectors.profileCamera,
+            selectors.btnCapture,
+            selectors.btnConfirm,
+            selectors.btnUpload,
+        ];
+
+        for (const step of steps) {
+            if(step) {
+                await this.waitAndClick(step);
+            } else {
+                console.log(">>> Missiing steps element");
+            }
+        }
+    }
+    
+    async profileGallery (selectors) {
+        await this.waitAndClick(selectors.profileGallery);
+        const permission = await this.waitAndFind(selectors.permissionDialog, 3000);
+        if(permission) {
+            await this.waitAndClick(selectors.allowAllLibrary);
+        } else {
+            console.log(">>> Permission already allowed")
+        }
+        
+        await this.waitAndClick(selectors.folderList);
+        const galleryList = this.waitAndFind(selectors.galleryImageList, 3000);
+        if(!galleryList) return console.log(">> No found image in the list");
+        const galleryItems = await this.waitAndFind$$(selectors.galleryImageItems);
+        if(galleryItems.length === 0) return console.log(">>> Selected folder is empty or no image found");
+        await galleryItems[1].click();
+        await this.waitAndFind(selectors.cropLayout, 3000);
+        await this.waitAndClick(selectors.btnUpload);
+        
+
+    }
 }
