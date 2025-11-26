@@ -1,26 +1,22 @@
-
 import { CameraHelper } from "../../helpers/camera.js";
-import { Gestures } from "../../helpers/gestures.js";
 import { EditPageSelectors, MyPageSelectors } from "../../selectors/selectors.js";
 import { BasePage } from "../base.js";
 
+
 export class EditPage extends BasePage{
-    constructor (driver) {
+    constructor(driver) {
         super(driver);
         this.selectors = {
             ...MyPageSelectors,
             ...EditPageSelectors,
-        }
-        this.gesture = new Gestures(driver);
-        this.cameraHelper = new CameraHelper(
-            this.driver, 
+        };
+        this.cameraHelper = new CameraHelper (
+            this.driver,
             this.waitAndClick.bind(this),
             this.waitAndFind.bind(this),
             this.waitAndFind$$.bind(this),
-        )
-    
+        );
     }
-
 
     async navEditPage () {
         try {
@@ -32,29 +28,35 @@ export class EditPage extends BasePage{
         }
     }
 
-
-    async profileUpload ({uploadVia = "camera"}) {
+    async profileUpdate ({ uploadVia = "camera" }) {
         try {
-            if(uploadVia !== "camera" && uploadVia !== "gallery") throw new Error (`>>> Invalid upload type: "${uploadVia}", use only "camera" | "gallery"`);
-            
-            const profileInReview = await this.elementExists(this.selectors.inReview, 4000);
-            if (profileInReview) return console.log(">>> User profile is still in-review, unable to upload new profile");
-            
-            await this.waitAndClick(this.selectors.uploadImg);
-            
-            const uploadSelection = await this.elementExists(this.selectors.uploadSelection, 3000);
-            if (!uploadSelection) return console.warn(">>> Profile upload selection modal is not displayed");
+            if(uploadVia !== "camera" && uploadVia !== "gallery") throw new Error (`>>> Invalid upload type: "${uploadVia}" , use "camera" | "gallery"`);
 
-            const upload = {
-            camera: async() => this.cameraHelper.profileCamera(this.selectors),
-            gallery: async() => this.cameraHelper.profileGallery(this.selectors),
+            const profileInReview = await this.elementExists(this.selectors.inReview, 5000);
+            if (profileInReview) return console.log(">>> User already submitted profile and waiting for review");
+
+            await this.waitAndClick(this.selectors.uploadImg);
+
+            const uploadSelectionModal = await this.elementExists(this.selectors.uploadSelection, 3000);
+            if (!uploadSelectionModal) return console.log(">>> Upload selection or modal is not displayed");
+
+            const type = {
+                camera: async() => this.cameraHelper.profileCamera(this.selectors),
+                gallery: async() => this.cameraHelper.profileGallery(this.selectors),
+            };
+
+            const profile = type[uploadVia];
+            await profile();
+
+            const inReview = await this.elementExists(this.selectors.inReview, 3000);
+            if(inReview) {
+                console.log(">>> User successfully submitted profile and waiting for review");
+            } else {
+                console.log(">>> Profile rejected or upload was unsuccessful");
             }
-            const uploadProfile = upload[uploadVia];
-            await uploadProfile();
-        } catch (error) {
-            throw new Error(`>>> Unexpected error occurs: ${error.message}`);
+        } catch (err) {
+            throw new Error(`>>> Unexpected Error: ${err.message}`);
         }
-        
-        
     }
+   
 }

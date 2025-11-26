@@ -5,8 +5,8 @@ describe ("Edit Page Test", function () {
 
     it.only("Edit Page Testing", async function () {
         await editPage.navEditPage();
-        await editPage.profileUpload({
-            uploadVia: "camera",
+        await editPage.profileUpdate({
+            uploadVia: "gallery",
         })
     })
 })

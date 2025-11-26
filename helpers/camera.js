@@ -87,8 +87,14 @@ export class CameraHelper {
     }
 
     async profileCamera (selectors) {
+        await this.waitAndClick(selectors.profileCamera);
+        const permission = await this.waitAndFind(selectors.permissionDialog, 3000);
+        if(permission) {
+            console.log(">>> Permission required, allowing permission...");
+            await this.waitAndClick(selectors.allowCamPermission);
+        } 
+
         const steps = [
-            selectors.profileCamera,
             selectors.btnCapture,
             selectors.btnConfirm,
             selectors.btnUpload,
@@ -98,7 +104,7 @@ export class CameraHelper {
             if(step) {
                 await this.waitAndClick(step);
             } else {
-                console.log(">>> Missiing steps element");
+                console.log(">>> Element not found or missing")
             }
         }
     }
@@ -107,9 +113,8 @@ export class CameraHelper {
         await this.waitAndClick(selectors.profileGallery);
         const permission = await this.waitAndFind(selectors.permissionDialog, 3000);
         if(permission) {
+            console.log(">>> Permission required, allowing permission...");
             await this.waitAndClick(selectors.allowAllLibrary);
-        } else {
-            console.log(">>> Permission already allowed")
         }
         
         await this.waitAndClick(selectors.folderList);
@@ -117,7 +122,7 @@ export class CameraHelper {
         if(!galleryList) return console.log(">> No found image in the list");
         const galleryItems = await this.waitAndFind$$(selectors.galleryImageItems);
         if(galleryItems.length === 0) return console.log(">>> Selected folder is empty or no image found");
-        await galleryItems[1].click();
+        await galleryItems[0].click();
         await this.waitAndFind(selectors.cropLayout, 3000);
         await this.waitAndClick(selectors.btnUpload);
         
