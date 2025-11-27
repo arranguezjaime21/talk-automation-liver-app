@@ -230,8 +230,6 @@ export const EditPageSelectors = {
     itemNickName: 'id=com.fdc_machetalk_broadcaster:id/tv_nickname',
     editNickName: 'id=com.fdc_machetalk_broadcaster:id/txt_edit_nickname',
     itemAge: 'id=com.fdc_machetalk_broadcaster:id/tv_age',
-    agePicker: '//android.widget.NumberPicker///android.widget.EditText[@resource-id="android:id/numberpicker_input"]',
-
     itemRegion: 'id=com.fdc_machetalk_broadcaster:id/tv_region',
     itemWork: 'id=com.fdc_machetalk_broadcaster:id/tv_occupation',
     itemHeight: 'id=com.fdc_machetalk_broadcaster:id/tv_height',
@@ -263,6 +261,12 @@ export const EditPageSelectors = {
     btnConfirm: 'id=com.android.camera2:id/done_button',
     btnUpload: 'id=com.fdc_machetalk_broadcaster:id/tv_use_photo',
     inReview: 'id=com.fdc_machetalk_broadcaster:id/underExaminationTxt',
-    profilePic: 'id=com.fdc_machetalk_broadcaster:id/rl_image_clickable',
+    profilePic: 'id=com.fdc_machetalk_broadcaster:id/rl_image_clickable',   
+
+    // -- picker --
+    selectedPicker: '//android.widget.NumberPicker/android.widget.EditText',
+    unselectedPicker: '//android.widget.NumberPicker/android.widget.Button',
+    listPicker: '//android.widget.NumberPicker',
+    saveBtn: 'id=com.fdc_machetalk_broadcaster:id/tv_confirm',
 
 }

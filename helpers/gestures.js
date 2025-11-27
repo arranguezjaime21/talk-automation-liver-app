@@ -54,21 +54,42 @@ export class Gestures {
         });
     }
 
-    // --- element-level scroll until target text appears ---
-
-    async scrollUntilVisible({ container, text, maxScroll = 10 }) {
-        for (let i = 0; i < maxScroll; i++) {
-            const item = await this.driver
-                .$(`//*[@text="${text}"]`)
-                .catch(() => null);
-
-            if (item && (await item.isDisplayed())) {
-                return item;
-            }
-
-            await this.scroll({ element: container, direction: "down" });
+    async _swipeInsidePicker(elementOrSelector) {
+        // Resolve element
+        let el = elementOrSelector;
+        if (typeof elementOrSelector === 'string') {
+            el = await this.driver.$(elementOrSelector);
         }
+        if (Array.isArray(el)) el = el[0];
 
-        throw new Error(`Element with text "${text}" not found after scrolling`);
+        // Get boundaries
+        let rect = typeof el.getRect === 'function'
+            ? await el.getRect()
+            : {
+                ...(await el.getLocation()),
+                ...(await el.getSize())
+            };
+
+        const startX = Math.round(rect.x + rect.width / 2);
+        const startY = Math.round(rect.y + rect.height * 0.7);
+        const endY   = Math.round(rect.y + rect.height * 0.3);
+
+        // Perform W3C Touch Action (modern Appium)
+        await this.driver.performActions([{
+            type: "pointer",
+            id: "finger1",
+            parameters: { pointerType: "touch" },
+            actions: [
+                { type: "pointerMove", duration: 0, x: startX, y: startY },
+                { type: "pointerDown", button: 0 },
+                { type: "pause", duration: 200 },
+                { type: "pointerMove", duration: 300, x: startX, y: endY },
+                { type: "pointerUp", button: 0 }
+            ]
+        }]);
+
+        // Reset actions (important)
+        await this.driver.releaseActions();
     }
+
 }
