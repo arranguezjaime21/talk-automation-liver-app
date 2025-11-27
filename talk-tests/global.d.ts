@@ -1,7 +1,7 @@
 import { LoginScreen } from "../talk-screens/login/login.main.js";
 import { MessageList } from "../talk-screens/message/messagelist.main.js";
 import { EditPage } from "../talk-screens/mypage/editpage.main.js";
-import { Logout } from "../talk-screens/mypage/logout.main.js";
+import { Logout } from "../talk-screens/settings/logout.main.js";
 import { NotificationSettings } from "../talk-screens/mypage/notificationsettings.main.js";
 import { AcquisitionStars } from "../talk-screens/mypage/stars.main.js";
 import { StreamingBonus } from "../talk-screens/mypage/streambonus.main.js";

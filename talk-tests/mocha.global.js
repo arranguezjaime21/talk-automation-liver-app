@@ -5,7 +5,7 @@ import { Permission } from "../talk-screens/permission/permission.main.js";
 import { CallSettings } from "../talk-screens/search/callsettings.main.js";
 import { CallAppeal } from "../talk-screens/search/callappeal.main.js";
 import { TemplateSettings } from "../talk-screens/mypage/templatesettings.main.js";
-import { Logout } from "../talk-screens/mypage/logout.main.js";
+import { Logout } from "../talk-screens/settings/logout.main.js";
 import { AcquisitionStars } from "../talk-screens/mypage/stars.main.js";
 import { NotificationSettings } from "../talk-screens/mypage/notificationsettings.main.js";
 import { StreamingBonus } from "../talk-screens/mypage/streambonus.main.js";
