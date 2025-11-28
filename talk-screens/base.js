@@ -76,5 +76,26 @@ export class BasePage {
         }   
     }
 
+    async toggleOnIfOff (selector) {
+        const el = await this.waitAndFind(selector, 2000);
+        if(await el.getAttribute("checked") === "false") {
+            await el.click();
+            return true;
+        }
+        return false;
+    }
 
+    async toggleOffIfOn (selector) {
+        const el = await this.waitAndFind(selector, 2000);
+        if(await el.getAttribute("checked") === "true") {
+            await el.click();
+            return true;
+        }
+        return false;
+    }
+
+    async toggleSate (selector) {
+        const el = await this.waitAndFind(selector, 2000);
+        return await el.getAttribute("checked") === "true";
+    }
 }

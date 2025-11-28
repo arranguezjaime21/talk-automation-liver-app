@@ -270,3 +270,12 @@ export const EditPageSelectors = {
     saveBtn: 'id=com.fdc_machetalk_broadcaster:id/tv_confirm',
 
 }
+
+export const VariousSettingsSelectors = {
+    accountSettings: '//android.widget.TextView[@resource-id="com.fdc_machetalk_broadcaster:id/menu_label" and @text="アカウント"]',
+    videoCallSettings: 'id=com.fdc_machetalk_broadcaster:id/cb_video_call',
+    audioCallSettings: 'id=com.fdc_machetalk_broadcaster:id/cb_voice_call',
+    callPermission: 'id=com.android.permissioncontroller:id/grant_dialog',
+    allowPermission: 'id=com.android.permissioncontroller:id/permission_allow_one_time_button',
+    allowConnectivity: 'id=com.android.permissioncontroller:id/permission_allow_button',
+}

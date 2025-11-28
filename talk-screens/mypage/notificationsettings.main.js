@@ -14,25 +14,24 @@ export class NotificationSettings extends BasePage{
         try {
             await this.waitAndClick(this.selectors.myPageNotificationSettings);
 
-            const vibrateSettings = await this.isButtonEnable(this.selectors.vibrateToggle);
-            const soundSettings = await this.isButtonEnable(this.selectors.soundToggle);
-            const notifySettings = await this.isButtonEnable(this.selectors.notificationsToggle);
-        
-            if (!vibrateSettings || !soundSettings || !notifySettings) {
-                console.log(">>> settings are off, enabling settings...");
+            const isEnable = (
+                await this.toggleOnIfOff(this.selectors.vibrateToggle) &&
+                await this.toggleOnIfOff(this.selectors.soundToggle) &&
+                await this.toggleOnIfOff(this.selectors.notificationsToggle)
+            )
 
-                if (!vibrateSettings) {
-                    await this.waitAndClick(this.selectors.vibrateToggle);
-                }
-                if (!soundSettings) {
-                    await this.waitAndClick (this.selectors.soundToggle);
-                }
-                if (!notifySettings) {
-                    this.waitAndClick(this.selectors.notificationsToggle);
-                }
-                
+            if(isEnable) {
+                // --check toggle buttons--
+                const vibrate = await this.toggleSate(this.selectors.vibrateToggle);
+                const sound = await this.toggleSate(this.selectors.soundToggle);
+                const notif = await this.toggleSate(this.selectors.notificationsToggle);
+                console.log (
+                    vibrate && sound && notif
+                    ? ">>> settings successfully enabled"
+                    : ">>> settings did not update"
+                )
             } else {
-                console.log(">>> settings already enabled");
+                console.log(">>> settings are already on")
             }
         } catch (error) {
             console.log(`>>> unexpected error or button not found: "${error.message}"`);
