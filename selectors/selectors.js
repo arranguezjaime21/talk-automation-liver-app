@@ -278,4 +278,15 @@ export const VariousSettingsSelectors = {
     callPermission: 'id=com.android.permissioncontroller:id/grant_dialog',
     allowPermission: 'id=com.android.permissioncontroller:id/permission_allow_one_time_button',
     allowConnectivity: 'id=com.android.permissioncontroller:id/permission_allow_button',
+
+    //email
+    snsMail: 'id=com.fdc_machetalk_broadcaster:id/btn_mail',
+    emailField: 'id=com.fdc_machetalk_broadcaster:id/txtEmail',
+    passwordField: 'id=com.fdc_machetalk_broadcaster:id/txtPassword',
+    confirmPassField: 'id=com.fdc_machetalk_broadcaster:id/txtConfPassword',
+    errorSnsMsg: 'id=com.fdc_machetalk_broadcaster:id/txtErrorMsg',
+    saveSns: 'id=com.fdc_machetalk_broadcaster:id/btnSubmit',
+    showPass: 'id=com.fdc_machetalk_broadcaster:id/imgShowPassword',
+    showConfirmPass: 'id=com.fdc_machetalk_broadcaster:id/imgShowConfPassword',
+
 }
