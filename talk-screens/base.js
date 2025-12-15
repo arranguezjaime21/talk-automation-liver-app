@@ -76,8 +76,8 @@ export class BasePage {
         }   
     }
 
-    async toggleOnIfOff (selector) {
-        const el = await this.waitAndFind(selector, 2000);
+    async toggleOnIfOff(selector) {
+        const el = await this.driver.$(selector, 3000);
         if(await el.getAttribute("checked") === "false") {
             await el.click();
             return true;
@@ -85,8 +85,8 @@ export class BasePage {
         return false;
     }
 
-    async toggleOffIfOn (selector) {
-        const el = await this.waitAndFind(selector, 2000);
+    async toggleOffIfOn(selector) {
+        const el = await this.driver.$(selector, 3000);
         if(await el.getAttribute("checked") === "true") {
             await el.click();
             return true;
@@ -94,8 +94,8 @@ export class BasePage {
         return false;
     }
 
-    async toggleSate (selector) {
-        const el = await this.waitAndFind(selector, 2000);
+    async toggleState(selector) {
+        const el = await this.driver.$(selector, 3000);
         return await el.getAttribute("checked") === "true";
     }
 }

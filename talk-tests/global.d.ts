@@ -14,7 +14,8 @@ import { TimelineComment } from "../talk-screens/timeline/timeline.comment.js";
 import { TimelineDeletion } from "../talk-screens/timeline/timeline.deletion.js";
 import { TimelineList } from "../talk-screens/timeline/timeline.list.js";
 import { TimelinePosting } from "../talk-screens/timeline/timeline.posting.js";
-import { AccountSettings } from "../talk-screens/settings/accountsettings.main.js";
+import { AccountSettings } from "../talk-screens/settings/accounsettings.main.js";
+
 
 declare global {
     var loginScreen: LoginScreen;

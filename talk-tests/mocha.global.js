@@ -16,7 +16,7 @@ import { TimelineList } from "../talk-screens/timeline/timeline.list.js";
 import { TimelineComment } from "../talk-screens/timeline/timeline.comment.js";
 import { MessageList } from "../talk-screens/message/messagelist.main.js";
 import { EditPage } from "../talk-screens/mypage/editpage.main.js";
-import { AccountSettings } from "../talk-screens/settings/accountsettings.main.js";
+import { AccountSettings } from "../talk-screens/settings/accounsettings.main.js";
 
 export const mochaHooks = {
 async beforeAll() {
@@ -47,7 +47,7 @@ async beforeAll() {
         global.messageList = new MessageList(global.driver);
         global.editPage = new EditPage(global.driver);
         global.accountSettings = new AccountSettings(global.driver);
-
+    
     },
 
 async afterAll() {
