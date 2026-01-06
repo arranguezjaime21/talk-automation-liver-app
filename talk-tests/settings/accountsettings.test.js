@@ -1,8 +1,8 @@
-describe ("Account Settings Test", function () {
+describe("Account Settings", function() {
     this.timeout(90000);
 
-    it("Modify Call Settings in Account Settings", async function () {
-        await accountSettings.navAccountSettings();
-        await accountSettings.enableVideoAudioSettings();
-    });
-});
+
+    it("Call Settings", async function () {
+        await accountSettings.disableAudioVideoCallSettings();
+    })
+})

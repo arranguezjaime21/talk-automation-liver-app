@@ -15,13 +15,14 @@ export class CameraHelper {
             selectors.btnUpload
         ];
 
-        for (const step of steps) {
-            if (step) {
-                await this.waitAndClick(step)
+        for(const step of steps) {
+            if(step) {
+                await this.waitAndClick(step);
             } else {
-                console.warn(">>> !missing selector in step list")
+                console.warn(">>> element not found or missing element");
             }
         }
+        
     }
 
     async templateGallery (selectors) {

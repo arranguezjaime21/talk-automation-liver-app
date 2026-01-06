@@ -13,4 +13,11 @@ describe ("Mypage Template Settings Test", function () {
     });
   });
 
+it.only(">>> test", async function () {
+  await templateSee.createTemplate({
+    content: FakeData.randomSentence(),
+    uploadType: "text"
+  });
+})
+
 })
