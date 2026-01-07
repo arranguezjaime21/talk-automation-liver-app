@@ -12,12 +12,4 @@ describe ("Mypage Template Settings Test", function () {
       templateType: "gallery",
     });
   });
-
-it.only(">>> test", async function () {
-  await templateSee.createTemplate({
-    content: FakeData.randomSentence(),
-    uploadType: "text"
-  });
-})
-
 })
