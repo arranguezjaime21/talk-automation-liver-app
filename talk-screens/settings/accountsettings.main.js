@@ -2,7 +2,7 @@ import { Gestures } from "../../helpers/gestures.js";
 import { MyPageSelectors, VariousSettingsSelectors } from "../../selectors/selectors.js";
 import { BasePage } from "../base.js";
 
-export class AccountSettings extends BasePage{
+export class AccountSettings extends BasePage {
     constructor(driver) {
         super(driver);
         this.selectors = {
@@ -12,138 +12,140 @@ export class AccountSettings extends BasePage{
         this.gestures = new Gestures(driver);
     }
 
-    async navAccountSettings () {
+    async navAccountCallSettings() {
         try {
             await this.waitAndClick(this.selectors.myPageNav);
             await this.waitAndClick(this.selectors.myPageSettings);
+        } catch (error) {
+            console.log(`>>> unable to find mypage navigations, proceeding on account settings`, error);
+        } finally {
             await this.waitAndClick(this.selectors.accountSettings);
-        } catch {
-            await this.waitAndClick(this.selectors.accountSettings);
-            return[];
         }
     }
 
-    async handlePermission() {
+    async allowCallSettingsPermission () {
         try {
             while (await this.elementExists(this.selectors.callPermission, 5000)) {
-                await this.driver.pause(300);
-                
-                if(await this.elementExists(this.selectors.allowPermission, 5000)) {
+                await this.driver.pause(200);
+
+                if(await this.elementExists(this.selectors.allowPermission, 3000)) {
                     await this.waitAndClick(this.selectors.allowPermission);
                     continue;
                 }
 
-                if(await this.elementExists(this.selectors.allowConnectivity, 5000)) {
+                if(await this.elementExists(this.selectors.allowConnectivity, 3000)) {
                     await this.waitAndClick(this.selectors.allowConnectivity);
                     continue;
                 }
 
-                console.log(">>> unknown permission is displayed");
                 break;
+                
             }
         } catch (error) {
-            throw new Error(`>>> unexpected error: ${error.message}`);
+            throw new Error(`>>> unknown permmission is displyed ${error.message}`);
         }
     }
 
-    async verifyCallSettings ({video, audio, successMsg, failMsg}) {
+    async verifyCallSettings({ video, audio, successMsg, failMsg }) {
         await this.gestures.swipeDownToRefresh();
-        await this.driver.pause(2000);
+        await this.driver.pause(1000);
 
         const videoSettings = await this.toggleState(this.selectors.videoCallSettings);
         const audioSettings = await this.toggleState(this.selectors.audioCallSettings);
-        const callSettingsState = videoSettings === video && audioSettings === audio;
-        if(!callSettingsState) {
+        const callSettings = video === videoSettings && audio === audioSettings;
+        if(!callSettings) {
             throw new Error(failMsg);
         } 
         console.log(successMsg);
     }
 
-    async enableVideoAudioCallSettings() {
+    async enableVideoAudioSettings() { 
         try {
             const videoSettings = await this.toggleOnIfOff(this.selectors.videoCallSettings);
-
+            
             if(videoSettings) {
                 console.log(">>> turning on video and audio call settings");
-
-                await this.handlePermission();
+                await this.allowCallSettingsPermission();
                 await this.verifyCallSettings({
                     video: true,
                     audio: true,
-                    successMsg: ">>> PASSED: video and audio call settings successfully ON",
-                    failMsg: ">>> FAILED: video and audio call settings still OFF",
+                    successMsg: ">>> SUCCESS: successfully enabled video and audio call settings",
+                    failMsg: ">>> FAIL: failed to update call settings"
                 });
             } else {
-                console.log(">>> video and audio call settings are already on");
+                console.log(">>> video and audio call settings are already on")
             }
+
         } catch (error) {
             throw new Error(`>>> unexpected error: ${error.message}`);
         }
     }
 
-    async enableAudioCallSettings() {
+    async enableAudioSettings() {
         try {
             const audioSettings = await this.toggleOnIfOff(this.selectors.audioCallSettings);
-
+            
             if(audioSettings) {
                 console.log(">>> turning on audio call settings");
-
-                await this.handlePermission();
+                await this.allowCallSettingsPermission();
                 await this.verifyCallSettings({
-                    video: false,
+                    video: false, 
                     audio: true,
-                    successMsg: ">>> PASSED: audio call settings successfully ON",
-                    failMsg: ">>> FAILED: audio call settings still OFF",
-                })
-            } else {
-                console.log(">>> audio call settings is already on");
-            }
-        } catch (error) {
-            throw new Error(`>>> unexpected error: ${error.message}`);
-        }
-    }
-
-    async disableVideoAudioCallSettings() {
-        try {
-            const videoCallSettings = await this.toggleOffIfOn(this.selectors.videoCallSettings);
-            const audioCallSettings = await this.toggleOffIfOn(this.selectors.audioCallSettings);
-
-            if(videoCallSettings || audioCallSettings) {
-                console.log(">>> turning off video and audio call settings");
-            } else {
-                console.log(">>> video and audio call settings are already off")
-            }
-
-            await this.verifyCallSettings({
-                video: false,
-                audio: false,
-                successMsg: ">>> PASSED: video and audio call settings successfully OFF",
-                failMsg: ">>> FAILED: video and audio call settings are still ON",
-            });
-
-        } catch (error) {
-            throw new Error(`>>> unexpected error: ${error.message}`);
-        }
-    }
-
-    async disableVideoCallSettings () {
-        try {
-            const videoSettings = await this.toggleOffIfOn(this.selectors.videoCallSettings);
-
-            if(videoSettings) {
-                console.log(">>> turning off video call settings");
-
-                await this.verifyCallSettings({
-                    video: false,
-                    audio: true,
-                    successMsg: ">>> PASSED: video call settings successfully OFF",
-                    failMsg: "video call settings still ON",
+                    successMsg: ">>> SUCCESS: successfully enabled audio call settings",
+                    failMsg: ">>> FAIL: failed to update call settings"
                 });
             } else {
-                console.log(">>> video call settings is already off");
+                console.log(">>> audio call settings already on");
             }
+
         } catch (error) {
             throw new Error(`>>> unexpected error: ${error.message}`);
         }
     }
+
+    async disableVideoSettings() {
+        try {
+            const videoSettings = await this.toggleOffIfOn(this.selectors.videoCallSettings);
+        
+            if(videoSettings) {
+                console.log(">>> turning off video call settings");
+                await this.verifyCallSettings({
+                    video: false,
+                    audio: true,
+                    successMsg: ">>> SUCCESS: successfully disabled video call settings",
+                    failMsg: ">>> FAIL: failed to update call settings"
+                });
+            } else {
+                console.log(">>> video call settings already off");
+            }
+            
+        } catch (error) {
+            throw new Error(`>>> unexpected error: ${error.message}`);
+        }
+        
+    }
+
+    async disableAudioVideoSettings() {
+        try {
+            const videoSettings = await this.toggleOffIfOn(this.selectors.videoCallSettings);
+            const audioSettings = await this.toggleOffIfOn(this.selectors.audioCallSettings);
+
+            if(videoSettings || audioSettings) {
+                console.log(">>> turning off video and audio call settings");
+                await this.verifyCallSettings({
+                    video: false, 
+                    audio: false,
+                    successMsg: ">>> SUCCESS: successfully disabled video and audio call settings",
+                    failMsg: ">>> FAIL: failed to update call settings"
+                })
+            } else {
+                console.log(">>> video and audio call settings are already off");
+            }
+        } catch (error) {
+            throw new Error(`>>> unexpected error: ${error.message}`);
+        }
+        
+    }
+
+    
 }

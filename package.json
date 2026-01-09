@@ -17,7 +17,7 @@
     "test:timeline": "npx mocha --require talk-tests/mocha.global.js talk-tests/timeline/timeline.test.js --timeout 60000",
     "test:message": "npx mocha --require talk-tests/mocha.global.js talk-tests/message/message.test.js --timeout 60000",
     "test:editpage": "npx mocha --require talk-tests/mocha.global.js talk-tests/mypage/editpage.test.js --timeout 60000",
-    "test:accountsettings": "npx mocha --require talk-tests/mocha.global.js talk-tests/settings/accountsettings.test.js --timeout 60000"
+    "test:accountcallsettings": "npx mocha --require talk-tests/mocha.global.js talk-tests/settings/accountcallsettings.test.js --timeout 60000"
   },
   "keywords": [],
   "author": "",
