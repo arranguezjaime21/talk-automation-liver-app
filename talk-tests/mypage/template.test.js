@@ -1,15 +1,13 @@
 import { FakeData } from "../../helpers/faker.js";
 
+describe("Mypage Template Settings", function () {
+    this.timeout(90000);
 
-describe ("Mypage Template Settings Test", function () {
-  this.timeout(90000);
-
-
-  it("Create Template with image upload via device gallery", async function () {
-    await templateSettings.navMyPageTemplate();
-    await templateSettings.templateCreation({
-      content: FakeData.randomSentence(),
-      templateType: "gallery",
-    });
-  });
+    it("Template Creation", async function () {
+        await templateSettings.navTemplateCreationScreen();
+        await templateSettings.createTemplate({
+            content: FakeData.randomSentence(),
+            templateType: "text",
+        })
+    })
 })
